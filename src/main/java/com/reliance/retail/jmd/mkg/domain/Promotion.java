@@ -2,6 +2,7 @@ package com.reliance.retail.jmd.mkg.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -83,15 +84,11 @@ public class Promotion implements Serializable {
 
     @NotNull
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @NotNull
-    @Column(name = "updated_by", nullable = false)
-    private String updatedBy;
-
-    @NotNull
-    @Column(name = "updated_date", nullable = false)
-    private LocalDate updatedDate;
+    @Column(name = "last_modified_date", nullable = false)
+    private Instant lastModifiedDate;
 
     @JsonIgnoreProperties(value = { "fieldMetaData", "formSubmissions", "promotion" }, allowSetters = true)
     @OneToOne
@@ -308,43 +305,30 @@ public class Promotion implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return this.createdDate;
     }
 
-    public Promotion createdDate(LocalDate createdDate) {
+    public Promotion createdDate(Instant createdDate) {
         this.setCreatedDate(createdDate);
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getUpdatedBy() {
-        return this.updatedBy;
+    public Instant getLastModifiedDate() {
+        return this.lastModifiedDate;
     }
 
-    public Promotion updatedBy(String updatedBy) {
-        this.setUpdatedBy(updatedBy);
+    public Promotion lastModifiedDate(Instant lastModifiedDate) {
+        this.setLastModifiedDate(lastModifiedDate);
         return this;
     }
 
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public LocalDate getUpdatedDate() {
-        return this.updatedDate;
-    }
-
-    public Promotion updatedDate(LocalDate updatedDate) {
-        this.setUpdatedDate(updatedDate);
-        return this;
-    }
-
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public FormMetaData getFormId() {
@@ -400,8 +384,7 @@ public class Promotion implements Serializable {
             ", endDate='" + getEndDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
-            ", updatedBy='" + getUpdatedBy() + "'" +
-            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

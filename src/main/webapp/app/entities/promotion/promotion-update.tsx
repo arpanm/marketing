@@ -42,6 +42,9 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
   }, [updateSuccess]);
 
   const saveEntity = values => {
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
+
     const entity = {
       ...promotionEntity,
       ...values,
@@ -57,9 +60,14 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const defaultValues = () =>
     isNew
-      ? {}
+      ? {
+          createdDate: displayDefaultDateTime(),
+          lastModifiedDate: displayDefaultDateTime(),
+        }
       : {
           ...promotionEntity,
+          createdDate: convertDateTimeFromServer(promotionEntity.createdDate),
+          lastModifiedDate: convertDateTimeFromServer(promotionEntity.lastModifiedDate),
           formId: promotionEntity?.formId?.id,
         };
 
@@ -230,27 +238,19 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 id="promotion-createdDate"
                 name="createdDate"
                 data-cy="createdDate"
-                type="date"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
               <ValidatedField
-                label={translate('marketingApp.promotion.updatedBy')}
-                id="promotion-updatedBy"
-                name="updatedBy"
-                data-cy="updatedBy"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                }}
-              />
-              <ValidatedField
-                label={translate('marketingApp.promotion.updatedDate')}
-                id="promotion-updatedDate"
-                name="updatedDate"
-                data-cy="updatedDate"
-                type="date"
+                label={translate('marketingApp.promotion.lastModifiedDate')}
+                id="promotion-lastModifiedDate"
+                name="lastModifiedDate"
+                data-cy="lastModifiedDate"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
