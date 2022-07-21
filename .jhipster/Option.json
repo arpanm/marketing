@@ -1,0 +1,31 @@
+{
+  "applications": ["marketing"],
+  "changelogDate": "20220721082129",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "jhi_option",
+  "fields": [
+    {
+      "fieldName": "value",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDefault",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Option",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fieldMetaData",
+      "otherEntityRelationshipName": "option",
+      "relationshipName": "field",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

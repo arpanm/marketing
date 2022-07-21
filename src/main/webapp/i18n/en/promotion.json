@@ -1,0 +1,42 @@
+{
+  "marketingApp": {
+    "promotion": {
+      "home": {
+        "title": "Promotions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Promotion",
+        "createOrEditLabel": "Create or edit a Promotion",
+        "notFound": "No Promotions found"
+      },
+      "created": "A new Promotion is created with identifier {{ param }}",
+      "updated": "A Promotion is updated with identifier {{ param }}",
+      "deleted": "A Promotion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Promotion {{ id }}?"
+      },
+      "detail": {
+        "title": "Promotion"
+      },
+      "id": "ID",
+      "name": "Name",
+      "urlName": "Url Name",
+      "desktopImageUrl": "Desktop Image Url",
+      "tabletImageUrl": "Tablet Image Url",
+      "mobileImageUrl": "Mobile Image Url",
+      "title": "Title",
+      "description": "Description",
+      "tnc": "Tnc",
+      "tncLink": "Tnc Link",
+      "landingUrl": "Landing Url",
+      "position": "Position",
+      "isEnabled": "Is Enabled",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "updatedBy": "Updated By",
+      "updatedDate": "Updated Date",
+      "form": "Form"
+    }
+  }
+}

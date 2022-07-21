@@ -1,0 +1,26 @@
+{
+  "marketingApp": {
+    "formSubmission": {
+      "home": {
+        "title": "Form Submissions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Form Submission",
+        "createOrEditLabel": "Create or edit a Form Submission",
+        "notFound": "No Form Submissions found"
+      },
+      "created": "A new Form Submission is created with identifier {{ param }}",
+      "updated": "A Form Submission is updated with identifier {{ param }}",
+      "deleted": "A Form Submission is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Form Submission {{ id }}?"
+      },
+      "detail": {
+        "title": "Form Submission"
+      },
+      "id": "ID",
+      "sessionidentifier": "Sessionidentifier",
+      "fieldSubmission": "Field Submission",
+      "form": "Form"
+    }
+  }
+}

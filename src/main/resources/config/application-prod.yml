@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    reliance.retail.jmd.mkg: INFO
+    com.reliance.retail.jmd.mkg: INFO
 
 management:
   metrics:

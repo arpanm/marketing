@@ -1,0 +1,30 @@
+{
+  "marketingApp": {
+    "formMetaData": {
+      "home": {
+        "title": "Form Meta Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Form Meta Data",
+        "createOrEditLabel": "Create or edit a Form Meta Data",
+        "notFound": "No Form Meta Data found"
+      },
+      "created": "A new Form Meta Data is created with identifier {{ param }}",
+      "updated": "A Form Meta Data is updated with identifier {{ param }}",
+      "deleted": "A Form Meta Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Form Meta Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Form Meta Data"
+      },
+      "id": "ID",
+      "name": "Name",
+      "title": "Title",
+      "isActive": "Is Active",
+      "multiSubmissionAllowed": "Multi Submission Allowed",
+      "fieldMetaData": "Field Meta Data",
+      "formSubmission": "Form Submission",
+      "promotion": "Promotion"
+    }
+  }
+}
