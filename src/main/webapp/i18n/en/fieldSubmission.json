@@ -1,0 +1,26 @@
+{
+  "marketingApp": {
+    "fieldSubmission": {
+      "home": {
+        "title": "Field Submissions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Field Submission",
+        "createOrEditLabel": "Create or edit a Field Submission",
+        "notFound": "No Field Submissions found"
+      },
+      "created": "A new Field Submission is created with identifier {{ param }}",
+      "updated": "A Field Submission is updated with identifier {{ param }}",
+      "deleted": "A Field Submission is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Field Submission {{ id }}?"
+      },
+      "detail": {
+        "title": "Field Submission"
+      },
+      "id": "ID",
+      "value": "Value",
+      "field": "Field",
+      "field": "Field"
+    }
+  }
+}

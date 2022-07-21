@@ -1,0 +1,56 @@
+{
+  "applications": ["marketing"],
+  "changelogDate": "20220721082127",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "form_meta_data",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "multiSubmissionAllowed",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FormMetaData",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fieldMetaData",
+      "otherEntityRelationshipName": "form",
+      "relationshipName": "fieldMetaData",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "formSubmission",
+      "otherEntityRelationshipName": "form",
+      "relationshipName": "formSubmission",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "promotion",
+      "otherEntityRelationshipName": "form",
+      "ownerSide": false,
+      "relationshipName": "promotion",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

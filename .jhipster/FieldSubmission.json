@@ -1,0 +1,33 @@
+{
+  "applications": ["marketing"],
+  "changelogDate": "20220721082131",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "field_submission",
+  "fields": [
+    {
+      "fieldName": "value",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FieldSubmission",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fieldMetaData",
+      "otherEntityRelationshipName": "fieldSubmission",
+      "relationshipName": "field",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "formSubmission",
+      "otherEntityRelationshipName": "fieldSubmission",
+      "relationshipName": "field",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

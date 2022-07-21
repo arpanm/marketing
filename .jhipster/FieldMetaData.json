@@ -1,0 +1,51 @@
+{
+  "applications": ["marketing"],
+  "changelogDate": "20220721082128",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "field_meta_data",
+  "fields": [
+    {
+      "fieldName": "key",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "DataType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TextBox,ContactNumber,ContactMail,DateBox,MultiCheckBox,SingleCheckBox,SelectBox,RadioGroup"
+    },
+    {
+      "fieldName": "isMandatory",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FieldMetaData",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "option",
+      "otherEntityRelationshipName": "field",
+      "relationshipName": "option",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "fieldSubmission",
+      "otherEntityRelationshipName": "field",
+      "relationshipName": "fieldSubmission",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "formMetaData",
+      "otherEntityRelationshipName": "fieldMetaData",
+      "relationshipName": "form",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,15 @@
+{
+  "marketingApp": {
+    "DataType": {
+      "null": "",
+      "TextBox": "TextBox",
+      "ContactNumber": "ContactNumber",
+      "ContactMail": "ContactMail",
+      "DateBox": "DateBox",
+      "MultiCheckBox": "MultiCheckBox",
+      "SingleCheckBox": "SingleCheckBox",
+      "SelectBox": "SelectBox",
+      "RadioGroup": "RadioGroup"
+    }
+  }
+}

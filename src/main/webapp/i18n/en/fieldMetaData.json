@@ -1,0 +1,29 @@
+{
+  "marketingApp": {
+    "fieldMetaData": {
+      "home": {
+        "title": "Field Meta Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Field Meta Data",
+        "createOrEditLabel": "Create or edit a Field Meta Data",
+        "notFound": "No Field Meta Data found"
+      },
+      "created": "A new Field Meta Data is created with identifier {{ param }}",
+      "updated": "A Field Meta Data is updated with identifier {{ param }}",
+      "deleted": "A Field Meta Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Field Meta Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Field Meta Data"
+      },
+      "id": "ID",
+      "key": "Key",
+      "type": "Type",
+      "isMandatory": "Is Mandatory",
+      "option": "Option",
+      "fieldSubmission": "Field Submission",
+      "form": "Form"
+    }
+  }
+}

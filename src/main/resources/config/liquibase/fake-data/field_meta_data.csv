@@ -1,0 +1,11 @@
+id;jhi_key;type;is_mandatory
+1;Tasty extensible;ContactMail;true
+2;fuchsia HDD drive;ContactMail;true
+3;HDD Delaware;TextBox;false
+4;Islands;SingleCheckBox;false
+5;Soap;TextBox;false
+6;Plastic PNG Frozen;TextBox;false
+7;copying;SingleCheckBox;true
+8;white;ContactNumber;true
+9;Qatari;SingleCheckBox;true
+10;Ruble Croatia yellow;ContactMail;true
