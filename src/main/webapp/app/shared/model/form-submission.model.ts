@@ -5,7 +5,7 @@ export interface IFormSubmission {
   id?: number;
   sessionidentifier?: string | null;
   fieldSubmissions?: IFieldSubmission[] | null;
-  form?: IFormMetaData | null;
+  formKey?: IFormMetaData | null;
 }
 
 export const defaultValue: Readonly<IFormSubmission> = {};

@@ -129,7 +129,7 @@ export const FormSubmission = (props: RouteComponentProps<{ url: string }>) => {
                     <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
-                    <Translate contentKey="marketingApp.formSubmission.form">Form</Translate> <FontAwesomeIcon icon="sort" />
+                    <Translate contentKey="marketingApp.formSubmission.formKey">Form Key</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -144,7 +144,11 @@ export const FormSubmission = (props: RouteComponentProps<{ url: string }>) => {
                     </td>
                     <td>{formSubmission.sessionidentifier}</td>
                     <td>
-                      {formSubmission.form ? <Link to={`/form-meta-data/${formSubmission.form.id}`}>{formSubmission.form.id}</Link> : ''}
+                      {formSubmission.formKey ? (
+                        <Link to={`/form-meta-data/${formSubmission.formKey.id}`}>{formSubmission.formKey.id}</Link>
+                      ) : (
+                        ''
+                      )}
                     </td>
                     <td className="text-end">
                       <div className="btn-group flex-btn-group-container">

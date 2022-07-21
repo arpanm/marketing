@@ -8,9 +8,9 @@
     -->
     <changeSet id="20220721082126-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="form_id"
+        <addForeignKeyConstraint baseColumnNames="form_id_id"
                                  baseTableName="promotion"
-                                 constraintName="fk_promotion__form_id"
+                                 constraintName="fk_promotion__form_id_id"
                                  referencedColumnNames="id"
                                  referencedTableName="form_meta_data"/>
     </changeSet>

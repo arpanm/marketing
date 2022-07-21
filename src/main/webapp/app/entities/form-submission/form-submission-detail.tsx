@@ -37,9 +37,9 @@ export const FormSubmissionDetail = (props: RouteComponentProps<{ id: string }>)
           </dt>
           <dd>{formSubmissionEntity.sessionidentifier}</dd>
           <dt>
-            <Translate contentKey="marketingApp.formSubmission.form">Form</Translate>
+            <Translate contentKey="marketingApp.formSubmission.formKey">Form Key</Translate>
           </dt>
-          <dd>{formSubmissionEntity.form ? formSubmissionEntity.form.id : ''}</dd>
+          <dd>{formSubmissionEntity.formKey ? formSubmissionEntity.formKey.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/form-submission" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

@@ -96,7 +96,7 @@ public class Promotion implements Serializable {
     @JsonIgnoreProperties(value = { "fieldMetaData", "formSubmissions", "promotion" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
-    private FormMetaData form;
+    private FormMetaData formId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -347,16 +347,16 @@ public class Promotion implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public FormMetaData getForm() {
-        return this.form;
+    public FormMetaData getFormId() {
+        return this.formId;
     }
 
-    public void setForm(FormMetaData formMetaData) {
-        this.form = formMetaData;
+    public void setFormId(FormMetaData formMetaData) {
+        this.formId = formMetaData;
     }
 
-    public Promotion form(FormMetaData formMetaData) {
-        this.setForm(formMetaData);
+    public Promotion formId(FormMetaData formMetaData) {
+        this.setFormId(formMetaData);
         return this;
     }
 

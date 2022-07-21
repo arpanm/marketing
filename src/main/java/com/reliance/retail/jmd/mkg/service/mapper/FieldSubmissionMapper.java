@@ -13,8 +13,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface FieldSubmissionMapper extends EntityMapper<FieldSubmissionDTO, FieldSubmission> {
-    @Mapping(target = "field", source = "field", qualifiedByName = "fieldMetaDataId")
-    @Mapping(target = "field", source = "field", qualifiedByName = "formSubmissionId")
+    @Mapping(target = "fieldKey", source = "fieldKey", qualifiedByName = "fieldMetaDataId")
+    @Mapping(target = "formSub", source = "formSub", qualifiedByName = "formSubmissionId")
     FieldSubmissionDTO toDto(FieldSubmission s);
 
     @Named("fieldMetaDataId")

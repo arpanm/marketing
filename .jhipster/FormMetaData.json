@@ -40,13 +40,13 @@
     },
     {
       "otherEntityName": "formSubmission",
-      "otherEntityRelationshipName": "form",
+      "otherEntityRelationshipName": "formKey",
       "relationshipName": "formSubmission",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "promotion",
-      "otherEntityRelationshipName": "form",
+      "otherEntityRelationshipName": "formId",
       "ownerSide": false,
       "relationshipName": "promotion",
       "relationshipType": "one-to-one"

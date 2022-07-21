@@ -31,8 +31,11 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class OptionResourceIT {
 
-    private static final String DEFAULT_VALUE = "AAAAAAAAAA";
-    private static final String UPDATED_VALUE = "BBBBBBBBBB";
+    private static final String DEFAULT_VALUE_STR = "AAAAAAAAAA";
+    private static final String UPDATED_VALUE_STR = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_IS_DEFAULT = false;
     private static final Boolean UPDATED_IS_DEFAULT = true;
@@ -64,7 +67,7 @@ class OptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Option createEntity(EntityManager em) {
-        Option option = new Option().value(DEFAULT_VALUE).isDefault(DEFAULT_IS_DEFAULT);
+        Option option = new Option().valueStr(DEFAULT_VALUE_STR).title(DEFAULT_TITLE).isDefault(DEFAULT_IS_DEFAULT);
         return option;
     }
 
@@ -75,7 +78,7 @@ class OptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Option createUpdatedEntity(EntityManager em) {
-        Option option = new Option().value(UPDATED_VALUE).isDefault(UPDATED_IS_DEFAULT);
+        Option option = new Option().valueStr(UPDATED_VALUE_STR).title(UPDATED_TITLE).isDefault(UPDATED_IS_DEFAULT);
         return option;
     }
 
@@ -98,7 +101,8 @@ class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeCreate + 1);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getValue()).isEqualTo(DEFAULT_VALUE);
+        assertThat(testOption.getValueStr()).isEqualTo(DEFAULT_VALUE_STR);
+        assertThat(testOption.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testOption.getIsDefault()).isEqualTo(DEFAULT_IS_DEFAULT);
     }
 
@@ -123,6 +127,60 @@ class OptionResourceIT {
 
     @Test
     @Transactional
+    void checkValueStrIsRequired() throws Exception {
+        int databaseSizeBeforeTest = optionRepository.findAll().size();
+        // set the field null
+        option.setValueStr(null);
+
+        // Create the Option, which fails.
+        OptionDTO optionDTO = optionMapper.toDto(option);
+
+        restOptionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(optionDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Option> optionList = optionRepository.findAll();
+        assertThat(optionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTitleIsRequired() throws Exception {
+        int databaseSizeBeforeTest = optionRepository.findAll().size();
+        // set the field null
+        option.setTitle(null);
+
+        // Create the Option, which fails.
+        OptionDTO optionDTO = optionMapper.toDto(option);
+
+        restOptionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(optionDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Option> optionList = optionRepository.findAll();
+        assertThat(optionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkIsDefaultIsRequired() throws Exception {
+        int databaseSizeBeforeTest = optionRepository.findAll().size();
+        // set the field null
+        option.setIsDefault(null);
+
+        // Create the Option, which fails.
+        OptionDTO optionDTO = optionMapper.toDto(option);
+
+        restOptionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(optionDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Option> optionList = optionRepository.findAll();
+        assertThat(optionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllOptions() throws Exception {
         // Initialize the database
         optionRepository.saveAndFlush(option);
@@ -133,7 +191,8 @@ class OptionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(option.getId().intValue())))
-            .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE)))
+            .andExpect(jsonPath("$.[*].valueStr").value(hasItem(DEFAULT_VALUE_STR)))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].isDefault").value(hasItem(DEFAULT_IS_DEFAULT.booleanValue())));
     }
 
@@ -149,7 +208,8 @@ class OptionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(option.getId().intValue()))
-            .andExpect(jsonPath("$.value").value(DEFAULT_VALUE))
+            .andExpect(jsonPath("$.valueStr").value(DEFAULT_VALUE_STR))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.isDefault").value(DEFAULT_IS_DEFAULT.booleanValue()));
     }
 
@@ -172,7 +232,7 @@ class OptionResourceIT {
         Option updatedOption = optionRepository.findById(option.getId()).get();
         // Disconnect from session so that the updates on updatedOption are not directly saved in db
         em.detach(updatedOption);
-        updatedOption.value(UPDATED_VALUE).isDefault(UPDATED_IS_DEFAULT);
+        updatedOption.valueStr(UPDATED_VALUE_STR).title(UPDATED_TITLE).isDefault(UPDATED_IS_DEFAULT);
         OptionDTO optionDTO = optionMapper.toDto(updatedOption);
 
         restOptionMockMvc
@@ -187,7 +247,8 @@ class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeUpdate);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testOption.getValueStr()).isEqualTo(UPDATED_VALUE_STR);
+        assertThat(testOption.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testOption.getIsDefault()).isEqualTo(UPDATED_IS_DEFAULT);
     }
 
@@ -268,7 +329,7 @@ class OptionResourceIT {
         Option partialUpdatedOption = new Option();
         partialUpdatedOption.setId(option.getId());
 
-        partialUpdatedOption.isDefault(UPDATED_IS_DEFAULT);
+        partialUpdatedOption.title(UPDATED_TITLE).isDefault(UPDATED_IS_DEFAULT);
 
         restOptionMockMvc
             .perform(
@@ -282,7 +343,8 @@ class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeUpdate);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getValue()).isEqualTo(DEFAULT_VALUE);
+        assertThat(testOption.getValueStr()).isEqualTo(DEFAULT_VALUE_STR);
+        assertThat(testOption.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testOption.getIsDefault()).isEqualTo(UPDATED_IS_DEFAULT);
     }
 
@@ -298,7 +360,7 @@ class OptionResourceIT {
         Option partialUpdatedOption = new Option();
         partialUpdatedOption.setId(option.getId());
 
-        partialUpdatedOption.value(UPDATED_VALUE).isDefault(UPDATED_IS_DEFAULT);
+        partialUpdatedOption.valueStr(UPDATED_VALUE_STR).title(UPDATED_TITLE).isDefault(UPDATED_IS_DEFAULT);
 
         restOptionMockMvc
             .perform(
@@ -312,7 +374,8 @@ class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeUpdate);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testOption.getValueStr()).isEqualTo(UPDATED_VALUE_STR);
+        assertThat(testOption.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testOption.getIsDefault()).isEqualTo(UPDATED_IS_DEFAULT);
     }
 

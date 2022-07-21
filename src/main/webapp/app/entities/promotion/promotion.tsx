@@ -182,7 +182,7 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                     <Translate contentKey="marketingApp.promotion.updatedDate">Updated Date</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
-                    <Translate contentKey="marketingApp.promotion.form">Form</Translate> <FontAwesomeIcon icon="sort" />
+                    <Translate contentKey="marketingApp.promotion.formId">Form Id</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -225,7 +225,7 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                         <TextFormat type="date" value={promotion.updatedDate} format={APP_LOCAL_DATE_FORMAT} />
                       ) : null}
                     </td>
-                    <td>{promotion.form ? <Link to={`/form-meta-data/${promotion.form.id}`}>{promotion.form.id}</Link> : ''}</td>
+                    <td>{promotion.formId ? <Link to={`/form-meta-data/${promotion.formId.id}`}>{promotion.formId.id}</Link> : ''}</td>
                     <td className="text-end">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`/promotion/${promotion.id}`} color="info" size="sm" data-cy="entityDetailsButton">

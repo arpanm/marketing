@@ -14,13 +14,13 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="value" type="varchar(255)">
+            <column name="value_str" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="field_id" type="bigint">
+            <column name="field_key_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="field_id" type="bigint">
+            <column name="form_sub_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -44,7 +44,7 @@
                   tableName="field_submission"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="value" type="string"/>
+            <column name="value_str" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

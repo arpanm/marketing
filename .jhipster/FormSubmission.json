@@ -18,14 +18,14 @@
   "relationships": [
     {
       "otherEntityName": "fieldSubmission",
-      "otherEntityRelationshipName": "field",
+      "otherEntityRelationshipName": "formSub",
       "relationshipName": "fieldSubmission",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "formMetaData",
       "otherEntityRelationshipName": "formSubmission",
-      "relationshipName": "form",
+      "relationshipName": "formKey",
       "relationshipType": "many-to-one"
     }
   ],

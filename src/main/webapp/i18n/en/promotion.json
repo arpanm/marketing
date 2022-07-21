@@ -36,7 +36,7 @@
       "createdDate": "Created Date",
       "updatedBy": "Updated By",
       "updatedDate": "Updated Date",
-      "form": "Form"
+      "formId": "Form Id"
     }
   }
 }

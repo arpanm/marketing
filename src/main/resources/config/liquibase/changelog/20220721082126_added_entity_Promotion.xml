@@ -68,8 +68,8 @@
             <column name="updated_date" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="form_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_promotion__form_id" />
+            <column name="form_id_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_promotion__form_id_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

@@ -17,7 +17,7 @@
             <column name="sessionidentifier" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="form_id" type="bigint">
+            <column name="form_key_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

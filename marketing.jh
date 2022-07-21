@@ -48,7 +48,7 @@ entity FormMetaData {
 }
 
 relationship OneToOne {
-  Promotion{form} to FormMetaData{promotion}
+  Promotion{formId} to FormMetaData{promotion}
 }
 
 entity FieldMetaData {
@@ -73,8 +73,9 @@ relationship OneToMany {
 }
 
 entity Option {
-  value String,
-  isDefault Boolean
+  valueStr String required,
+  title String required,
+  isDefault Boolean required
 }
 
 relationship OneToMany {
@@ -86,17 +87,17 @@ entity FormSubmission {
 }
 
 relationship OneToMany {
-  FormMetaData to FormSubmission{form}
+  FormMetaData to FormSubmission{formKey}
 }
 
 entity FieldSubmission {
-  value String
+  valueStr String
 }
 
 relationship OneToMany {
-  FieldMetaData to FieldSubmission{field}
+  FieldMetaData to FieldSubmission{fieldKey}
 }
 
 relationship OneToMany {
-  FormSubmission to FieldSubmission{field}
+  FormSubmission to FieldSubmission{formSub}
 }

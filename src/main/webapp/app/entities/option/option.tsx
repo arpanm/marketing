@@ -124,8 +124,11 @@ export const Option = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('id')}>
                     <Translate contentKey="marketingApp.option.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('value')}>
-                    <Translate contentKey="marketingApp.option.value">Value</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={sort('valueStr')}>
+                    <Translate contentKey="marketingApp.option.valueStr">Value Str</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('title')}>
+                    <Translate contentKey="marketingApp.option.title">Title</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={sort('isDefault')}>
                     <Translate contentKey="marketingApp.option.isDefault">Is Default</Translate> <FontAwesomeIcon icon="sort" />
@@ -144,7 +147,8 @@ export const Option = (props: RouteComponentProps<{ url: string }>) => {
                         {option.id}
                       </Button>
                     </td>
-                    <td>{option.value}</td>
+                    <td>{option.valueStr}</td>
+                    <td>{option.title}</td>
                     <td>{option.isDefault ? 'true' : 'false'}</td>
                     <td>{option.field ? <Link to={`/field-meta-data/${option.field.id}`}>{option.field.id}</Link> : ''}</td>
                     <td className="text-end">

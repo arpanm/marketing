@@ -2,8 +2,9 @@ import { IFieldMetaData } from 'app/shared/model/field-meta-data.model';
 
 export interface IOption {
   id?: number;
-  value?: string | null;
-  isDefault?: boolean | null;
+  valueStr?: string;
+  title?: string;
+  isDefault?: boolean;
   field?: IFieldMetaData | null;
 }
 

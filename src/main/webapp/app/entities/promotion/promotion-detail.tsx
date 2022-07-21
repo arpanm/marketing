@@ -151,9 +151,9 @@ export const PromotionDetail = (props: RouteComponentProps<{ id: string }>) => {
             ) : null}
           </dd>
           <dt>
-            <Translate contentKey="marketingApp.promotion.form">Form</Translate>
+            <Translate contentKey="marketingApp.promotion.formId">Form Id</Translate>
           </dt>
-          <dd>{promotionEntity.form ? promotionEntity.form.id : ''}</dd>
+          <dd>{promotionEntity.formId ? promotionEntity.formId.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/promotion" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

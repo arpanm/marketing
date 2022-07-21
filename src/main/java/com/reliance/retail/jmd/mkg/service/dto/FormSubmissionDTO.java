@@ -12,7 +12,7 @@ public class FormSubmissionDTO implements Serializable {
 
     private String sessionidentifier;
 
-    private FormMetaDataDTO form;
+    private FormMetaDataDTO formKey;
 
     public Long getId() {
         return id;
@@ -30,12 +30,12 @@ public class FormSubmissionDTO implements Serializable {
         this.sessionidentifier = sessionidentifier;
     }
 
-    public FormMetaDataDTO getForm() {
-        return form;
+    public FormMetaDataDTO getFormKey() {
+        return formKey;
     }
 
-    public void setForm(FormMetaDataDTO form) {
-        this.form = form;
+    public void setFormKey(FormMetaDataDTO formKey) {
+        this.formKey = formKey;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class FormSubmissionDTO implements Serializable {
         return "FormSubmissionDTO{" +
             "id=" + getId() +
             ", sessionidentifier='" + getSessionidentifier() + "'" +
-            ", form=" + getForm() +
+            ", formKey=" + getFormKey() +
             "}";
     }
 }

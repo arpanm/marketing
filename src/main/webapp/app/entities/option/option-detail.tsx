@@ -31,11 +31,17 @@ export const OptionDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{optionEntity.id}</dd>
           <dt>
-            <span id="value">
-              <Translate contentKey="marketingApp.option.value">Value</Translate>
+            <span id="valueStr">
+              <Translate contentKey="marketingApp.option.valueStr">Value Str</Translate>
             </span>
           </dt>
-          <dd>{optionEntity.value}</dd>
+          <dd>{optionEntity.valueStr}</dd>
+          <dt>
+            <span id="title">
+              <Translate contentKey="marketingApp.option.title">Title</Translate>
+            </span>
+          </dt>
+          <dd>{optionEntity.title}</dd>
           <dt>
             <span id="isDefault">
               <Translate contentKey="marketingApp.option.isDefault">Is Default</Translate>

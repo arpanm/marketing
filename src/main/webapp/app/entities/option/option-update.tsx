@@ -88,7 +88,26 @@ export const OptionUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   validate={{ required: true }}
                 />
               ) : null}
-              <ValidatedField label={translate('marketingApp.option.value')} id="option-value" name="value" data-cy="value" type="text" />
+              <ValidatedField
+                label={translate('marketingApp.option.valueStr')}
+                id="option-valueStr"
+                name="valueStr"
+                data-cy="valueStr"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
+              />
+              <ValidatedField
+                label={translate('marketingApp.option.title')}
+                id="option-title"
+                name="title"
+                data-cy="title"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
+              />
               <ValidatedField
                 label={translate('marketingApp.option.isDefault')}
                 id="option-isDefault"

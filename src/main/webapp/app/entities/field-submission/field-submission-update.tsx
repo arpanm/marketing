@@ -49,8 +49,8 @@ export const FieldSubmissionUpdate = (props: RouteComponentProps<{ id: string }>
     const entity = {
       ...fieldSubmissionEntity,
       ...values,
-      field: fieldMetaData.find(it => it.id.toString() === values.field.toString()),
-      field: formSubmissions.find(it => it.id.toString() === values.field.toString()),
+      fieldKey: fieldMetaData.find(it => it.id.toString() === values.fieldKey.toString()),
+      formSub: formSubmissions.find(it => it.id.toString() === values.formSub.toString()),
     };
 
     if (isNew) {
@@ -65,8 +65,8 @@ export const FieldSubmissionUpdate = (props: RouteComponentProps<{ id: string }>
       ? {}
       : {
           ...fieldSubmissionEntity,
-          field: fieldSubmissionEntity?.field?.id,
-          field: fieldSubmissionEntity?.field?.id,
+          fieldKey: fieldSubmissionEntity?.fieldKey?.id,
+          formSub: fieldSubmissionEntity?.formSub?.id,
         };
 
   return (
@@ -95,17 +95,17 @@ export const FieldSubmissionUpdate = (props: RouteComponentProps<{ id: string }>
                 />
               ) : null}
               <ValidatedField
-                label={translate('marketingApp.fieldSubmission.value')}
-                id="field-submission-value"
-                name="value"
-                data-cy="value"
+                label={translate('marketingApp.fieldSubmission.valueStr')}
+                id="field-submission-valueStr"
+                name="valueStr"
+                data-cy="valueStr"
                 type="text"
               />
               <ValidatedField
-                id="field-submission-field"
-                name="field"
-                data-cy="field"
-                label={translate('marketingApp.fieldSubmission.field')}
+                id="field-submission-fieldKey"
+                name="fieldKey"
+                data-cy="fieldKey"
+                label={translate('marketingApp.fieldSubmission.fieldKey')}
                 type="select"
               >
                 <option value="" key="0" />
@@ -118,10 +118,10 @@ export const FieldSubmissionUpdate = (props: RouteComponentProps<{ id: string }>
                   : null}
               </ValidatedField>
               <ValidatedField
-                id="field-submission-field"
-                name="field"
-                data-cy="field"
-                label={translate('marketingApp.fieldSubmission.field')}
+                id="field-submission-formSub"
+                name="formSub"
+                data-cy="formSub"
+                label={translate('marketingApp.fieldSubmission.formSub')}
                 type="select"
               >
                 <option value="" key="0" />

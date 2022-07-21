@@ -31,8 +31,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class FieldSubmissionResourceIT {
 
-    private static final String DEFAULT_VALUE = "AAAAAAAAAA";
-    private static final String UPDATED_VALUE = "BBBBBBBBBB";
+    private static final String DEFAULT_VALUE_STR = "AAAAAAAAAA";
+    private static final String UPDATED_VALUE_STR = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/field-submissions";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -61,7 +61,7 @@ class FieldSubmissionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static FieldSubmission createEntity(EntityManager em) {
-        FieldSubmission fieldSubmission = new FieldSubmission().value(DEFAULT_VALUE);
+        FieldSubmission fieldSubmission = new FieldSubmission().valueStr(DEFAULT_VALUE_STR);
         return fieldSubmission;
     }
 
@@ -72,7 +72,7 @@ class FieldSubmissionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static FieldSubmission createUpdatedEntity(EntityManager em) {
-        FieldSubmission fieldSubmission = new FieldSubmission().value(UPDATED_VALUE);
+        FieldSubmission fieldSubmission = new FieldSubmission().valueStr(UPDATED_VALUE_STR);
         return fieldSubmission;
     }
 
@@ -97,7 +97,7 @@ class FieldSubmissionResourceIT {
         List<FieldSubmission> fieldSubmissionList = fieldSubmissionRepository.findAll();
         assertThat(fieldSubmissionList).hasSize(databaseSizeBeforeCreate + 1);
         FieldSubmission testFieldSubmission = fieldSubmissionList.get(fieldSubmissionList.size() - 1);
-        assertThat(testFieldSubmission.getValue()).isEqualTo(DEFAULT_VALUE);
+        assertThat(testFieldSubmission.getValueStr()).isEqualTo(DEFAULT_VALUE_STR);
     }
 
     @Test
@@ -133,7 +133,7 @@ class FieldSubmissionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(fieldSubmission.getId().intValue())))
-            .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE)));
+            .andExpect(jsonPath("$.[*].valueStr").value(hasItem(DEFAULT_VALUE_STR)));
     }
 
     @Test
@@ -148,7 +148,7 @@ class FieldSubmissionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(fieldSubmission.getId().intValue()))
-            .andExpect(jsonPath("$.value").value(DEFAULT_VALUE));
+            .andExpect(jsonPath("$.valueStr").value(DEFAULT_VALUE_STR));
     }
 
     @Test
@@ -170,7 +170,7 @@ class FieldSubmissionResourceIT {
         FieldSubmission updatedFieldSubmission = fieldSubmissionRepository.findById(fieldSubmission.getId()).get();
         // Disconnect from session so that the updates on updatedFieldSubmission are not directly saved in db
         em.detach(updatedFieldSubmission);
-        updatedFieldSubmission.value(UPDATED_VALUE);
+        updatedFieldSubmission.valueStr(UPDATED_VALUE_STR);
         FieldSubmissionDTO fieldSubmissionDTO = fieldSubmissionMapper.toDto(updatedFieldSubmission);
 
         restFieldSubmissionMockMvc
@@ -185,7 +185,7 @@ class FieldSubmissionResourceIT {
         List<FieldSubmission> fieldSubmissionList = fieldSubmissionRepository.findAll();
         assertThat(fieldSubmissionList).hasSize(databaseSizeBeforeUpdate);
         FieldSubmission testFieldSubmission = fieldSubmissionList.get(fieldSubmissionList.size() - 1);
-        assertThat(testFieldSubmission.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testFieldSubmission.getValueStr()).isEqualTo(UPDATED_VALUE_STR);
     }
 
     @Test
@@ -267,7 +267,7 @@ class FieldSubmissionResourceIT {
         FieldSubmission partialUpdatedFieldSubmission = new FieldSubmission();
         partialUpdatedFieldSubmission.setId(fieldSubmission.getId());
 
-        partialUpdatedFieldSubmission.value(UPDATED_VALUE);
+        partialUpdatedFieldSubmission.valueStr(UPDATED_VALUE_STR);
 
         restFieldSubmissionMockMvc
             .perform(
@@ -281,7 +281,7 @@ class FieldSubmissionResourceIT {
         List<FieldSubmission> fieldSubmissionList = fieldSubmissionRepository.findAll();
         assertThat(fieldSubmissionList).hasSize(databaseSizeBeforeUpdate);
         FieldSubmission testFieldSubmission = fieldSubmissionList.get(fieldSubmissionList.size() - 1);
-        assertThat(testFieldSubmission.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testFieldSubmission.getValueStr()).isEqualTo(UPDATED_VALUE_STR);
     }
 
     @Test
@@ -296,7 +296,7 @@ class FieldSubmissionResourceIT {
         FieldSubmission partialUpdatedFieldSubmission = new FieldSubmission();
         partialUpdatedFieldSubmission.setId(fieldSubmission.getId());
 
-        partialUpdatedFieldSubmission.value(UPDATED_VALUE);
+        partialUpdatedFieldSubmission.valueStr(UPDATED_VALUE_STR);
 
         restFieldSubmissionMockMvc
             .perform(
@@ -310,7 +310,7 @@ class FieldSubmissionResourceIT {
         List<FieldSubmission> fieldSubmissionList = fieldSubmissionRepository.findAll();
         assertThat(fieldSubmissionList).hasSize(databaseSizeBeforeUpdate);
         FieldSubmission testFieldSubmission = fieldSubmissionList.get(fieldSubmissionList.size() - 1);
-        assertThat(testFieldSubmission.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testFieldSubmission.getValueStr()).isEqualTo(UPDATED_VALUE_STR);
     }
 
     @Test
