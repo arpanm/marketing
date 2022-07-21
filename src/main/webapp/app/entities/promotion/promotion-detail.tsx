@@ -130,24 +130,16 @@ export const PromotionDetail = (props: RouteComponentProps<{ id: string }>) => {
             </span>
           </dt>
           <dd>
-            {promotionEntity.createdDate ? (
-              <TextFormat value={promotionEntity.createdDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-            ) : null}
+            {promotionEntity.createdDate ? <TextFormat value={promotionEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
           </dd>
           <dt>
-            <span id="updatedBy">
-              <Translate contentKey="marketingApp.promotion.updatedBy">Updated By</Translate>
-            </span>
-          </dt>
-          <dd>{promotionEntity.updatedBy}</dd>
-          <dt>
-            <span id="updatedDate">
-              <Translate contentKey="marketingApp.promotion.updatedDate">Updated Date</Translate>
+            <span id="lastModifiedDate">
+              <Translate contentKey="marketingApp.promotion.lastModifiedDate">Last Modified Date</Translate>
             </span>
           </dt>
           <dd>
-            {promotionEntity.updatedDate ? (
-              <TextFormat value={promotionEntity.updatedDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            {promotionEntity.lastModifiedDate ? (
+              <TextFormat value={promotionEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
             ) : null}
           </dd>
           <dt>

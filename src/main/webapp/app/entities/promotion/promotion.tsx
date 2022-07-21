@@ -175,11 +175,9 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('createdDate')}>
                     <Translate contentKey="marketingApp.promotion.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('updatedBy')}>
-                    <Translate contentKey="marketingApp.promotion.updatedBy">Updated By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('updatedDate')}>
-                    <Translate contentKey="marketingApp.promotion.updatedDate">Updated Date</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={sort('lastModifiedDate')}>
+                    <Translate contentKey="marketingApp.promotion.lastModifiedDate">Last Modified Date</Translate>{' '}
+                    <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
                     <Translate contentKey="marketingApp.promotion.formId">Form Id</Translate> <FontAwesomeIcon icon="sort" />
@@ -215,14 +213,11 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                     </td>
                     <td>{promotion.createdBy}</td>
                     <td>
-                      {promotion.createdDate ? (
-                        <TextFormat type="date" value={promotion.createdDate} format={APP_LOCAL_DATE_FORMAT} />
-                      ) : null}
+                      {promotion.createdDate ? <TextFormat type="date" value={promotion.createdDate} format={APP_DATE_FORMAT} /> : null}
                     </td>
-                    <td>{promotion.updatedBy}</td>
                     <td>
-                      {promotion.updatedDate ? (
-                        <TextFormat type="date" value={promotion.updatedDate} format={APP_LOCAL_DATE_FORMAT} />
+                      {promotion.lastModifiedDate ? (
+                        <TextFormat type="date" value={promotion.lastModifiedDate} format={APP_DATE_FORMAT} />
                       ) : null}
                     </td>
                     <td>{promotion.formId ? <Link to={`/form-meta-data/${promotion.formId.id}`}>{promotion.formId.id}</Link> : ''}</td>

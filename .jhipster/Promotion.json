@@ -80,17 +80,12 @@
     },
     {
       "fieldName": "createdDate",
-      "fieldType": "LocalDate",
+      "fieldType": "Instant",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "updatedBy",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "updatedDate",
-      "fieldType": "LocalDate",
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
       "fieldValidateRules": ["required"]
     }
   ],

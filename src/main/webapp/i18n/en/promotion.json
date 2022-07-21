@@ -34,8 +34,7 @@
       "endDate": "End Date",
       "createdBy": "Created By",
       "createdDate": "Created Date",
-      "updatedBy": "Updated By",
-      "updatedDate": "Updated Date",
+      "lastModifiedDate": "Last Modified Date",
       "formId": "Form Id"
     }
   }

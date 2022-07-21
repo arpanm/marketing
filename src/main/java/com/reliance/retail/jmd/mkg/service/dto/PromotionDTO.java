@@ -1,6 +1,7 @@
 package com.reliance.retail.jmd.mkg.service.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 import javax.validation.constraints.*;
@@ -56,13 +57,10 @@ public class PromotionDTO implements Serializable {
     private String createdBy;
 
     @NotNull
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @NotNull
-    private String updatedBy;
-
-    @NotNull
-    private LocalDate updatedDate;
+    private Instant lastModifiedDate;
 
     private FormMetaDataDTO formId;
 
@@ -194,28 +192,20 @@ public class PromotionDTO implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getUpdatedBy() {
-        return updatedBy;
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public LocalDate getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public FormMetaDataDTO getFormId() {
@@ -268,8 +258,7 @@ public class PromotionDTO implements Serializable {
             ", endDate='" + getEndDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
-            ", updatedBy='" + getUpdatedBy() + "'" +
-            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", formId=" + getFormId() +
             "}";
     }
