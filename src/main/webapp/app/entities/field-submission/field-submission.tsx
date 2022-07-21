@@ -124,14 +124,14 @@ export const FieldSubmission = (props: RouteComponentProps<{ url: string }>) => 
                   <th className="hand" onClick={sort('id')}>
                     <Translate contentKey="marketingApp.fieldSubmission.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('value')}>
-                    <Translate contentKey="marketingApp.fieldSubmission.value">Value</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={sort('valueStr')}>
+                    <Translate contentKey="marketingApp.fieldSubmission.valueStr">Value Str</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
-                    <Translate contentKey="marketingApp.fieldSubmission.field">Field</Translate> <FontAwesomeIcon icon="sort" />
+                    <Translate contentKey="marketingApp.fieldSubmission.fieldKey">Field Key</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
-                    <Translate contentKey="marketingApp.fieldSubmission.field">Field</Translate> <FontAwesomeIcon icon="sort" />
+                    <Translate contentKey="marketingApp.fieldSubmission.formSub">Form Sub</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -144,17 +144,17 @@ export const FieldSubmission = (props: RouteComponentProps<{ url: string }>) => 
                         {fieldSubmission.id}
                       </Button>
                     </td>
-                    <td>{fieldSubmission.value}</td>
+                    <td>{fieldSubmission.valueStr}</td>
                     <td>
-                      {fieldSubmission.field ? (
-                        <Link to={`/field-meta-data/${fieldSubmission.field.id}`}>{fieldSubmission.field.id}</Link>
+                      {fieldSubmission.fieldKey ? (
+                        <Link to={`/field-meta-data/${fieldSubmission.fieldKey.id}`}>{fieldSubmission.fieldKey.id}</Link>
                       ) : (
                         ''
                       )}
                     </td>
                     <td>
-                      {fieldSubmission.field ? (
-                        <Link to={`/form-submission/${fieldSubmission.field.id}`}>{fieldSubmission.field.id}</Link>
+                      {fieldSubmission.formSub ? (
+                        <Link to={`/form-submission/${fieldSubmission.formSub.id}`}>{fieldSubmission.formSub.id}</Link>
                       ) : (
                         ''
                       )}

@@ -18,7 +18,8 @@
         "title": "Option"
       },
       "id": "ID",
-      "value": "Value",
+      "valueStr": "Value Str",
+      "title": "Title",
       "isDefault": "Is Default",
       "field": "Field"
     }

@@ -45,13 +45,13 @@ public class FormMetaData implements Serializable {
     @JsonIgnoreProperties(value = { "options", "fieldSubmissions", "form" }, allowSetters = true)
     private Set<FieldMetaData> fieldMetaData = new HashSet<>();
 
-    @OneToMany(mappedBy = "form")
+    @OneToMany(mappedBy = "formKey")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "fieldSubmissions", "form" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "fieldSubmissions", "formKey" }, allowSetters = true)
     private Set<FormSubmission> formSubmissions = new HashSet<>();
 
-    @JsonIgnoreProperties(value = { "form" }, allowSetters = true)
-    @OneToOne(mappedBy = "form")
+    @JsonIgnoreProperties(value = { "formId" }, allowSetters = true)
+    @OneToOne(mappedBy = "formId")
     private Promotion promotion;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -158,10 +158,10 @@ public class FormMetaData implements Serializable {
 
     public void setFormSubmissions(Set<FormSubmission> formSubmissions) {
         if (this.formSubmissions != null) {
-            this.formSubmissions.forEach(i -> i.setForm(null));
+            this.formSubmissions.forEach(i -> i.setFormKey(null));
         }
         if (formSubmissions != null) {
-            formSubmissions.forEach(i -> i.setForm(this));
+            formSubmissions.forEach(i -> i.setFormKey(this));
         }
         this.formSubmissions = formSubmissions;
     }
@@ -173,13 +173,13 @@ public class FormMetaData implements Serializable {
 
     public FormMetaData addFormSubmission(FormSubmission formSubmission) {
         this.formSubmissions.add(formSubmission);
-        formSubmission.setForm(this);
+        formSubmission.setFormKey(this);
         return this;
     }
 
     public FormMetaData removeFormSubmission(FormSubmission formSubmission) {
         this.formSubmissions.remove(formSubmission);
-        formSubmission.setForm(null);
+        formSubmission.setFormKey(null);
         return this;
     }
 
@@ -189,10 +189,10 @@ public class FormMetaData implements Serializable {
 
     public void setPromotion(Promotion promotion) {
         if (this.promotion != null) {
-            this.promotion.setForm(null);
+            this.promotion.setFormId(null);
         }
         if (promotion != null) {
-            promotion.setForm(this);
+            promotion.setFormId(this);
         }
         this.promotion = promotion;
     }

@@ -43,9 +43,9 @@ public class FieldMetaData implements Serializable {
     @JsonIgnoreProperties(value = { "field" }, allowSetters = true)
     private Set<Option> options = new HashSet<>();
 
-    @OneToMany(mappedBy = "field")
+    @OneToMany(mappedBy = "fieldKey")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "field", "field" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "fieldKey", "formSub" }, allowSetters = true)
     private Set<FieldSubmission> fieldSubmissions = new HashSet<>();
 
     @ManyToOne
@@ -143,10 +143,10 @@ public class FieldMetaData implements Serializable {
 
     public void setFieldSubmissions(Set<FieldSubmission> fieldSubmissions) {
         if (this.fieldSubmissions != null) {
-            this.fieldSubmissions.forEach(i -> i.setField(null));
+            this.fieldSubmissions.forEach(i -> i.setFieldKey(null));
         }
         if (fieldSubmissions != null) {
-            fieldSubmissions.forEach(i -> i.setField(this));
+            fieldSubmissions.forEach(i -> i.setFieldKey(this));
         }
         this.fieldSubmissions = fieldSubmissions;
     }
@@ -158,13 +158,13 @@ public class FieldMetaData implements Serializable {
 
     public FieldMetaData addFieldSubmission(FieldSubmission fieldSubmission) {
         this.fieldSubmissions.add(fieldSubmission);
-        fieldSubmission.setField(this);
+        fieldSubmission.setFieldKey(this);
         return this;
     }
 
     public FieldMetaData removeFieldSubmission(FieldSubmission fieldSubmission) {
         this.fieldSubmissions.remove(fieldSubmission);
-        fieldSubmission.setField(null);
+        fieldSubmission.setFieldKey(null);
         return this;
     }
 

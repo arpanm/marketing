@@ -21,7 +21,7 @@ export interface IPromotion {
   createdDate?: string;
   updatedBy?: string;
   updatedDate?: string;
-  form?: IFormMetaData | null;
+  formId?: IFormMetaData | null;
 }
 
 export const defaultValue: Readonly<IPromotion> = {

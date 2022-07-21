@@ -6,7 +6,7 @@
   "entityTableName": "field_submission",
   "fields": [
     {
-      "fieldName": "value",
+      "fieldName": "valueStr",
       "fieldType": "String"
     }
   ],
@@ -19,13 +19,13 @@
     {
       "otherEntityName": "fieldMetaData",
       "otherEntityRelationshipName": "fieldSubmission",
-      "relationshipName": "field",
+      "relationshipName": "fieldKey",
       "relationshipType": "many-to-one"
     },
     {
       "otherEntityName": "formSubmission",
       "otherEntityRelationshipName": "fieldSubmission",
-      "relationshipName": "field",
+      "relationshipName": "formSub",
       "relationshipType": "many-to-one"
     }
   ],

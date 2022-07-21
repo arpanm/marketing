@@ -31,19 +31,19 @@ export const FieldSubmissionDetail = (props: RouteComponentProps<{ id: string }>
           </dt>
           <dd>{fieldSubmissionEntity.id}</dd>
           <dt>
-            <span id="value">
-              <Translate contentKey="marketingApp.fieldSubmission.value">Value</Translate>
+            <span id="valueStr">
+              <Translate contentKey="marketingApp.fieldSubmission.valueStr">Value Str</Translate>
             </span>
           </dt>
-          <dd>{fieldSubmissionEntity.value}</dd>
+          <dd>{fieldSubmissionEntity.valueStr}</dd>
           <dt>
-            <Translate contentKey="marketingApp.fieldSubmission.field">Field</Translate>
+            <Translate contentKey="marketingApp.fieldSubmission.fieldKey">Field Key</Translate>
           </dt>
-          <dd>{fieldSubmissionEntity.field ? fieldSubmissionEntity.field.id : ''}</dd>
+          <dd>{fieldSubmissionEntity.fieldKey ? fieldSubmissionEntity.fieldKey.id : ''}</dd>
           <dt>
-            <Translate contentKey="marketingApp.fieldSubmission.field">Field</Translate>
+            <Translate contentKey="marketingApp.fieldSubmission.formSub">Form Sub</Translate>
           </dt>
-          <dd>{fieldSubmissionEntity.field ? fieldSubmissionEntity.field.id : ''}</dd>
+          <dd>{fieldSubmissionEntity.formSub ? fieldSubmissionEntity.formSub.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/field-submission" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

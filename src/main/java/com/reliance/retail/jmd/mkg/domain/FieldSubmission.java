@@ -21,18 +21,16 @@ public class FieldSubmission implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "value")
-    private String value;
+    @Column(name = "value_str")
+    private String valueStr;
 
-    @ManyToOne
     @ManyToOne
     @JsonIgnoreProperties(value = { "options", "fieldSubmissions", "form" }, allowSetters = true)
-    private FieldMetaData field;
+    private FieldMetaData fieldKey;
 
     @ManyToOne
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "fieldSubmissions", "form" }, allowSetters = true)
-    private FormSubmission field;
+    @JsonIgnoreProperties(value = { "fieldSubmissions", "formKey" }, allowSetters = true)
+    private FormSubmission formSub;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -49,42 +47,42 @@ public class FieldSubmission implements Serializable {
         this.id = id;
     }
 
-    public String getValue() {
-        return this.value;
+    public String getValueStr() {
+        return this.valueStr;
     }
 
-    public FieldSubmission value(String value) {
-        this.setValue(value);
+    public FieldSubmission valueStr(String valueStr) {
+        this.setValueStr(valueStr);
         return this;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueStr(String valueStr) {
+        this.valueStr = valueStr;
     }
 
-    public FieldMetaData getField() {
-        return this.field;
+    public FieldMetaData getFieldKey() {
+        return this.fieldKey;
     }
 
-    public void setField(FieldMetaData fieldMetaData) {
-        this.field = fieldMetaData;
+    public void setFieldKey(FieldMetaData fieldMetaData) {
+        this.fieldKey = fieldMetaData;
     }
 
-    public FieldSubmission field(FieldMetaData fieldMetaData) {
-        this.setField(fieldMetaData);
+    public FieldSubmission fieldKey(FieldMetaData fieldMetaData) {
+        this.setFieldKey(fieldMetaData);
         return this;
     }
 
-    public FormSubmission getField() {
-        return this.field;
+    public FormSubmission getFormSub() {
+        return this.formSub;
     }
 
-    public void setField(FormSubmission formSubmission) {
-        this.field = formSubmission;
+    public void setFormSub(FormSubmission formSubmission) {
+        this.formSub = formSubmission;
     }
 
-    public FieldSubmission field(FormSubmission formSubmission) {
-        this.setField(formSubmission);
+    public FieldSubmission formSub(FormSubmission formSubmission) {
+        this.setFormSub(formSubmission);
         return this;
     }
 
@@ -112,7 +110,7 @@ public class FieldSubmission implements Serializable {
     public String toString() {
         return "FieldSubmission{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
+            ", valueStr='" + getValueStr() + "'" +
             "}";
     }
 }

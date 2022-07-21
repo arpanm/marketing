@@ -2,6 +2,7 @@ package com.reliance.retail.jmd.mkg.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link com.reliance.retail.jmd.mkg.domain.Option} entity.
@@ -10,8 +11,13 @@ public class OptionDTO implements Serializable {
 
     private Long id;
 
-    private String value;
+    @NotNull
+    private String valueStr;
 
+    @NotNull
+    private String title;
+
+    @NotNull
     private Boolean isDefault;
 
     private FieldMetaDataDTO field;
@@ -24,12 +30,20 @@ public class OptionDTO implements Serializable {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getValueStr() {
+        return valueStr;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueStr(String valueStr) {
+        this.valueStr = valueStr;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Boolean getIsDefault() {
@@ -74,7 +88,8 @@ public class OptionDTO implements Serializable {
     public String toString() {
         return "OptionDTO{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
+            ", valueStr='" + getValueStr() + "'" +
+            ", title='" + getTitle() + "'" +
             ", isDefault='" + getIsDefault() + "'" +
             ", field=" + getField() +
             "}";

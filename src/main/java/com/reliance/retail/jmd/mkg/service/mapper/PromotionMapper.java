@@ -11,7 +11,7 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface PromotionMapper extends EntityMapper<PromotionDTO, Promotion> {
-    @Mapping(target = "form", source = "form", qualifiedByName = "formMetaDataId")
+    @Mapping(target = "formId", source = "formId", qualifiedByName = "formMetaDataId")
     PromotionDTO toDto(Promotion s);
 
     @Named("formMetaDataId")

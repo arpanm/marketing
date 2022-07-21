@@ -26,14 +26,14 @@ public class FormSubmission implements Serializable {
     @Column(name = "sessionidentifier")
     private String sessionidentifier;
 
-    @OneToMany(mappedBy = "field")
+    @OneToMany(mappedBy = "formSub")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "field", "field" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "fieldKey", "formSub" }, allowSetters = true)
     private Set<FieldSubmission> fieldSubmissions = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "fieldMetaData", "formSubmissions", "promotion" }, allowSetters = true)
-    private FormMetaData form;
+    private FormMetaData formKey;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -69,10 +69,10 @@ public class FormSubmission implements Serializable {
 
     public void setFieldSubmissions(Set<FieldSubmission> fieldSubmissions) {
         if (this.fieldSubmissions != null) {
-            this.fieldSubmissions.forEach(i -> i.setField(null));
+            this.fieldSubmissions.forEach(i -> i.setFormSub(null));
         }
         if (fieldSubmissions != null) {
-            fieldSubmissions.forEach(i -> i.setField(this));
+            fieldSubmissions.forEach(i -> i.setFormSub(this));
         }
         this.fieldSubmissions = fieldSubmissions;
     }
@@ -84,26 +84,26 @@ public class FormSubmission implements Serializable {
 
     public FormSubmission addFieldSubmission(FieldSubmission fieldSubmission) {
         this.fieldSubmissions.add(fieldSubmission);
-        fieldSubmission.setField(this);
+        fieldSubmission.setFormSub(this);
         return this;
     }
 
     public FormSubmission removeFieldSubmission(FieldSubmission fieldSubmission) {
         this.fieldSubmissions.remove(fieldSubmission);
-        fieldSubmission.setField(null);
+        fieldSubmission.setFormSub(null);
         return this;
     }
 
-    public FormMetaData getForm() {
-        return this.form;
+    public FormMetaData getFormKey() {
+        return this.formKey;
     }
 
-    public void setForm(FormMetaData formMetaData) {
-        this.form = formMetaData;
+    public void setFormKey(FormMetaData formMetaData) {
+        this.formKey = formMetaData;
     }
 
-    public FormSubmission form(FormMetaData formMetaData) {
-        this.setForm(formMetaData);
+    public FormSubmission formKey(FormMetaData formMetaData) {
+        this.setFormKey(formMetaData);
         return this;
     }
 

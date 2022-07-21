@@ -64,7 +64,7 @@ public class PromotionDTO implements Serializable {
     @NotNull
     private LocalDate updatedDate;
 
-    private FormMetaDataDTO form;
+    private FormMetaDataDTO formId;
 
     public Long getId() {
         return id;
@@ -218,12 +218,12 @@ public class PromotionDTO implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public FormMetaDataDTO getForm() {
-        return form;
+    public FormMetaDataDTO getFormId() {
+        return formId;
     }
 
-    public void setForm(FormMetaDataDTO form) {
-        this.form = form;
+    public void setFormId(FormMetaDataDTO formId) {
+        this.formId = formId;
     }
 
     @Override
@@ -270,7 +270,7 @@ public class PromotionDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
-            ", form=" + getForm() +
+            ", formId=" + getFormId() +
             "}";
     }
 }

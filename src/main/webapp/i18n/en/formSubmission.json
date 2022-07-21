@@ -20,7 +20,7 @@
       "id": "ID",
       "sessionidentifier": "Sessionidentifier",
       "fieldSubmission": "Field Submission",
-      "form": "Form"
+      "formKey": "Form Key"
     }
   }
 }

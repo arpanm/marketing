@@ -6,12 +6,19 @@
   "entityTableName": "jhi_option",
   "fields": [
     {
-      "fieldName": "value",
-      "fieldType": "String"
+      "fieldName": "valueStr",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "isDefault",
-      "fieldType": "Boolean"
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
     }
   ],
   "fluentMethods": true,

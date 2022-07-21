@@ -36,7 +36,7 @@
     },
     {
       "otherEntityName": "fieldSubmission",
-      "otherEntityRelationshipName": "field",
+      "otherEntityRelationshipName": "fieldKey",
       "relationshipName": "fieldSubmission",
       "relationshipType": "one-to-many"
     },

@@ -18,9 +18,9 @@
         "title": "Field Submission"
       },
       "id": "ID",
-      "value": "Value",
-      "field": "Field",
-      "field": "Field"
+      "valueStr": "Value Str",
+      "fieldKey": "Field Key",
+      "formSub": "Form Sub"
     }
   }
 }

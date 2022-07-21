@@ -45,7 +45,7 @@ export const FormSubmissionUpdate = (props: RouteComponentProps<{ id: string }>)
     const entity = {
       ...formSubmissionEntity,
       ...values,
-      form: formMetaData.find(it => it.id.toString() === values.form.toString()),
+      formKey: formMetaData.find(it => it.id.toString() === values.formKey.toString()),
     };
 
     if (isNew) {
@@ -60,7 +60,7 @@ export const FormSubmissionUpdate = (props: RouteComponentProps<{ id: string }>)
       ? {}
       : {
           ...formSubmissionEntity,
-          form: formSubmissionEntity?.form?.id,
+          formKey: formSubmissionEntity?.formKey?.id,
         };
 
   return (
@@ -96,10 +96,10 @@ export const FormSubmissionUpdate = (props: RouteComponentProps<{ id: string }>)
                 type="text"
               />
               <ValidatedField
-                id="form-submission-form"
-                name="form"
-                data-cy="form"
-                label={translate('marketingApp.formSubmission.form')}
+                id="form-submission-formKey"
+                name="formKey"
+                data-cy="formKey"
+                label={translate('marketingApp.formSubmission.formKey')}
                 type="select"
               >
                 <option value="" key="0" />

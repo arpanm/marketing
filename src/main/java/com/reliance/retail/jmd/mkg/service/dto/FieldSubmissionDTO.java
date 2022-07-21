@@ -10,11 +10,11 @@ public class FieldSubmissionDTO implements Serializable {
 
     private Long id;
 
-    private String value;
+    private String valueStr;
 
-    private FieldMetaDataDTO field;
+    private FieldMetaDataDTO fieldKey;
 
-    private FormSubmissionDTO field;
+    private FormSubmissionDTO formSub;
 
     public Long getId() {
         return id;
@@ -24,28 +24,28 @@ public class FieldSubmissionDTO implements Serializable {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getValueStr() {
+        return valueStr;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueStr(String valueStr) {
+        this.valueStr = valueStr;
     }
 
-    public FieldMetaDataDTO getField() {
-        return field;
+    public FieldMetaDataDTO getFieldKey() {
+        return fieldKey;
     }
 
-    public void setField(FieldMetaDataDTO field) {
-        this.field = field;
+    public void setFieldKey(FieldMetaDataDTO fieldKey) {
+        this.fieldKey = fieldKey;
     }
 
-    public FormSubmissionDTO getField() {
-        return field;
+    public FormSubmissionDTO getFormSub() {
+        return formSub;
     }
 
-    public void setField(FormSubmissionDTO field) {
-        this.field = field;
+    public void setFormSub(FormSubmissionDTO formSub) {
+        this.formSub = formSub;
     }
 
     @Override
@@ -74,9 +74,9 @@ public class FieldSubmissionDTO implements Serializable {
     public String toString() {
         return "FieldSubmissionDTO{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
-            ", field=" + getField() +
-            ", field=" + getField() +
+            ", valueStr='" + getValueStr() + "'" +
+            ", fieldKey=" + getFieldKey() +
+            ", formSub=" + getFormSub() +
             "}";
     }
 }

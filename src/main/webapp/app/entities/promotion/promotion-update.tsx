@@ -45,7 +45,7 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
     const entity = {
       ...promotionEntity,
       ...values,
-      form: formMetaData.find(it => it.id.toString() === values.form.toString()),
+      formId: formMetaData.find(it => it.id.toString() === values.formId.toString()),
     };
 
     if (isNew) {
@@ -60,7 +60,7 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
       ? {}
       : {
           ...promotionEntity,
-          form: promotionEntity?.form?.id,
+          formId: promotionEntity?.formId?.id,
         };
 
   return (
@@ -255,7 +255,13 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
-              <ValidatedField id="promotion-form" name="form" data-cy="form" label={translate('marketingApp.promotion.form')} type="select">
+              <ValidatedField
+                id="promotion-formId"
+                name="formId"
+                data-cy="formId"
+                label={translate('marketingApp.promotion.formId')}
+                type="select"
+              >
                 <option value="" key="0" />
                 {formMetaData
                   ? formMetaData.map(otherEntity => (

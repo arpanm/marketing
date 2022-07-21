@@ -9,6 +9,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +56,7 @@ public class OptionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/options")
-    public ResponseEntity<OptionDTO> createOption(@RequestBody OptionDTO optionDTO) throws URISyntaxException {
+    public ResponseEntity<OptionDTO> createOption(@Valid @RequestBody OptionDTO optionDTO) throws URISyntaxException {
         log.debug("REST request to save Option : {}", optionDTO);
         if (optionDTO.getId() != null) {
             throw new BadRequestAlertException("A new option cannot already have an ID", ENTITY_NAME, "idexists");
@@ -79,7 +81,7 @@ public class OptionResource {
     @PutMapping("/options/{id}")
     public ResponseEntity<OptionDTO> updateOption(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody OptionDTO optionDTO
+        @Valid @RequestBody OptionDTO optionDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Option : {}, {}", id, optionDTO);
         if (optionDTO.getId() == null) {
@@ -114,7 +116,7 @@ public class OptionResource {
     @PatchMapping(value = "/options/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<OptionDTO> partialUpdateOption(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody OptionDTO optionDTO
+        @NotNull @RequestBody OptionDTO optionDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update Option partially : {}, {}", id, optionDTO);
         if (optionDTO.getId() == null) {

@@ -3,6 +3,7 @@ package com.reliance.retail.jmd.mkg.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -21,10 +22,16 @@ public class Option implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "value")
-    private String value;
+    @NotNull
+    @Column(name = "value_str", nullable = false)
+    private String valueStr;
 
-    @Column(name = "is_default")
+    @NotNull
+    @Column(name = "title", nullable = false)
+    private String title;
+
+    @NotNull
+    @Column(name = "is_default", nullable = false)
     private Boolean isDefault;
 
     @ManyToOne
@@ -46,17 +53,30 @@ public class Option implements Serializable {
         this.id = id;
     }
 
-    public String getValue() {
-        return this.value;
+    public String getValueStr() {
+        return this.valueStr;
     }
 
-    public Option value(String value) {
-        this.setValue(value);
+    public Option valueStr(String valueStr) {
+        this.setValueStr(valueStr);
         return this;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueStr(String valueStr) {
+        this.valueStr = valueStr;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Option title(String title) {
+        this.setTitle(title);
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Boolean getIsDefault() {
@@ -109,7 +129,8 @@ public class Option implements Serializable {
     public String toString() {
         return "Option{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
+            ", valueStr='" + getValueStr() + "'" +
+            ", title='" + getTitle() + "'" +
             ", isDefault='" + getIsDefault() + "'" +
             "}";
     }
