@@ -35,9 +35,9 @@ entity Promotion {
   startDate LocalDate required,
   endDate LocalDate required,
   createdBy String required,
-  createdDate LocalDate required,
-  updatedBy String required,
-  updatedDate LocalDate required
+  createdDate Instant required,
+  lastModifiedDate String required,
+  lastModifiedDate Instant required
 }
 
 entity FormMetaData {
