@@ -34,6 +34,7 @@
       "endDate": "End Date",
       "createdBy": "Created By",
       "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
       "lastModifiedDate": "Last Modified Date",
       "formId": "Form Id"
     }

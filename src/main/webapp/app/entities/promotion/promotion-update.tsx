@@ -245,6 +245,16 @@ export const PromotionUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 }}
               />
               <ValidatedField
+                label={translate('marketingApp.promotion.lastModifiedBy')}
+                id="promotion-lastModifiedBy"
+                name="lastModifiedBy"
+                data-cy="lastModifiedBy"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
+              />
+              <ValidatedField
                 label={translate('marketingApp.promotion.lastModifiedDate')}
                 id="promotion-lastModifiedDate"
                 name="lastModifiedDate"

@@ -87,6 +87,10 @@ public class Promotion implements Serializable {
     private Instant createdDate;
 
     @NotNull
+    @Column(name = "last_modified_by", nullable = false)
+    private String lastModifiedBy;
+
+    @NotNull
     @Column(name = "last_modified_date", nullable = false)
     private Instant lastModifiedDate;
 
@@ -318,6 +322,19 @@ public class Promotion implements Serializable {
         this.createdDate = createdDate;
     }
 
+    public String getLastModifiedBy() {
+        return this.lastModifiedBy;
+    }
+
+    public Promotion lastModifiedBy(String lastModifiedBy) {
+        this.setLastModifiedBy(lastModifiedBy);
+        return this;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
     public Instant getLastModifiedDate() {
         return this.lastModifiedDate;
     }
@@ -384,6 +401,7 @@ public class Promotion implements Serializable {
             ", endDate='" + getEndDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }

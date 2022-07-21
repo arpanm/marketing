@@ -84,6 +84,11 @@
       "fieldValidateRules": ["required"]
     },
     {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "lastModifiedDate",
       "fieldType": "Instant",
       "fieldValidateRules": ["required"]
