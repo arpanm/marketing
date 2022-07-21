@@ -1,0 +1,102 @@
+
+application {
+  config {
+    baseName marketing,
+    serverPort 8080,
+    applicationType monolith,
+    packageName com.reliance.retail.jmd.mkg,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework react,
+    clientPackageManager npm,
+    buildTool maven,
+    enableSwaggerCodegen true,
+    languages [en]
+  }
+  entities *
+  dto * with mapstruct
+  paginate * with infinite-scroll
+  service all with serviceImpl
+}
+
+entity Promotion {
+  name String required,
+  urlName String required,
+  desktopImageUrl String required,
+  tabletImageUrl String required,
+  mobileImageUrl String required,
+  title String required,
+  description String required,
+  tnc String,
+  tncLink String,
+  landingUrl String required,
+  position Integer required,
+  isEnabled Boolean required,
+  startDate LocalDate required,
+  endDate LocalDate required,
+  createdBy String required,
+  createdDate LocalDate required,
+  updatedBy String required,
+  updatedDate LocalDate required
+}
+
+entity FormMetaData {
+  name String required,
+  title String required,
+  isActive Boolean required,
+  multiSubmissionAllowed Boolean required
+}
+
+relationship OneToOne {
+  Promotion{form} to FormMetaData{promotion}
+}
+
+entity FieldMetaData {
+  key String required,
+  type DataType required,
+  isMandatory Boolean required
+}
+
+enum DataType {
+  TextBox,
+  ContactNumber,
+  ContactMail,
+  DateBox,
+  MultiCheckBox,
+  SingleCheckBox,
+  SelectBox,
+  RadioGroup
+}
+
+relationship OneToMany {
+  FormMetaData to FieldMetaData{form}
+}
+
+entity Option {
+  value String,
+  isDefault Boolean
+}
+
+relationship OneToMany {
+  FieldMetaData to Option{field}
+}
+
+entity FormSubmission {
+  sessionidentifier String
+}
+
+relationship OneToMany {
+  FormMetaData to FormSubmission{form}
+}
+
+entity FieldSubmission {
+  value String
+}
+
+relationship OneToMany {
+  FieldMetaData to FieldSubmission{field}
+}
+
+relationship OneToMany {
+  FormSubmission to FieldSubmission{field}
+}
