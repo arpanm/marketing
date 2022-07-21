@@ -83,6 +83,9 @@ class PromotionResourceIT {
     private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final String DEFAULT_LAST_MODIFIED_BY = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_MODIFIED_BY = "BBBBBBBBBB";
+
     private static final Instant DEFAULT_LAST_MODIFIED_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_LAST_MODIFIED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -130,6 +133,7 @@ class PromotionResourceIT {
             .endDate(DEFAULT_END_DATE)
             .createdBy(DEFAULT_CREATED_BY)
             .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedBy(DEFAULT_LAST_MODIFIED_BY)
             .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
         return promotion;
     }
@@ -158,6 +162,7 @@ class PromotionResourceIT {
             .endDate(UPDATED_END_DATE)
             .createdBy(UPDATED_CREATED_BY)
             .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
             .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         return promotion;
     }
@@ -197,6 +202,7 @@ class PromotionResourceIT {
         assertThat(testPromotion.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testPromotion.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testPromotion.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testPromotion.getLastModifiedBy()).isEqualTo(DEFAULT_LAST_MODIFIED_BY);
         assertThat(testPromotion.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
@@ -473,6 +479,24 @@ class PromotionResourceIT {
 
     @Test
     @Transactional
+    void checkLastModifiedByIsRequired() throws Exception {
+        int databaseSizeBeforeTest = promotionRepository.findAll().size();
+        // set the field null
+        promotion.setLastModifiedBy(null);
+
+        // Create the Promotion, which fails.
+        PromotionDTO promotionDTO = promotionMapper.toDto(promotion);
+
+        restPromotionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(promotionDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Promotion> promotionList = promotionRepository.findAll();
+        assertThat(promotionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void checkLastModifiedDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = promotionRepository.findAll().size();
         // set the field null
@@ -517,6 +541,7 @@ class PromotionResourceIT {
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_MODIFIED_BY)))
             .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
     }
 
@@ -548,6 +573,7 @@ class PromotionResourceIT {
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_MODIFIED_BY))
             .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
     }
 
@@ -587,6 +613,7 @@ class PromotionResourceIT {
             .endDate(UPDATED_END_DATE)
             .createdBy(UPDATED_CREATED_BY)
             .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
             .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         PromotionDTO promotionDTO = promotionMapper.toDto(updatedPromotion);
 
@@ -618,6 +645,7 @@ class PromotionResourceIT {
         assertThat(testPromotion.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testPromotion.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testPromotion.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPromotion.getLastModifiedBy()).isEqualTo(UPDATED_LAST_MODIFIED_BY);
         assertThat(testPromotion.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
@@ -709,7 +737,8 @@ class PromotionResourceIT {
             .landingUrl(UPDATED_LANDING_URL)
             .position(UPDATED_POSITION)
             .createdBy(UPDATED_CREATED_BY)
-            .createdDate(UPDATED_CREATED_DATE);
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restPromotionMockMvc
             .perform(
@@ -739,7 +768,8 @@ class PromotionResourceIT {
         assertThat(testPromotion.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testPromotion.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testPromotion.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testPromotion.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
+        assertThat(testPromotion.getLastModifiedBy()).isEqualTo(DEFAULT_LAST_MODIFIED_BY);
+        assertThat(testPromotion.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -771,6 +801,7 @@ class PromotionResourceIT {
             .endDate(UPDATED_END_DATE)
             .createdBy(UPDATED_CREATED_BY)
             .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
             .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restPromotionMockMvc
@@ -801,6 +832,7 @@ class PromotionResourceIT {
         assertThat(testPromotion.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testPromotion.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testPromotion.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPromotion.getLastModifiedBy()).isEqualTo(UPDATED_LAST_MODIFIED_BY);
         assertThat(testPromotion.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 

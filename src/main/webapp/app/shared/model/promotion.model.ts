@@ -19,6 +19,7 @@ export interface IPromotion {
   endDate?: string;
   createdBy?: string;
   createdDate?: string;
+  lastModifiedBy?: string;
   lastModifiedDate?: string;
   formId?: IFormMetaData | null;
 }

@@ -60,6 +60,9 @@ public class PromotionDTO implements Serializable {
     private Instant createdDate;
 
     @NotNull
+    private String lastModifiedBy;
+
+    @NotNull
     private Instant lastModifiedDate;
 
     private FormMetaDataDTO formId;
@@ -200,6 +203,14 @@ public class PromotionDTO implements Serializable {
         this.createdDate = createdDate;
     }
 
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
     public Instant getLastModifiedDate() {
         return lastModifiedDate;
     }
@@ -258,6 +269,7 @@ public class PromotionDTO implements Serializable {
             ", endDate='" + getEndDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", formId=" + getFormId() +
             "}";

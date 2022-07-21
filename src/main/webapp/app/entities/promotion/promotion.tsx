@@ -175,6 +175,10 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('createdDate')}>
                     <Translate contentKey="marketingApp.promotion.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
+                  <th className="hand" onClick={sort('lastModifiedBy')}>
+                    <Translate contentKey="marketingApp.promotion.lastModifiedBy">Last Modified By</Translate>{' '}
+                    <FontAwesomeIcon icon="sort" />
+                  </th>
                   <th className="hand" onClick={sort('lastModifiedDate')}>
                     <Translate contentKey="marketingApp.promotion.lastModifiedDate">Last Modified Date</Translate>{' '}
                     <FontAwesomeIcon icon="sort" />
@@ -215,6 +219,7 @@ export const Promotion = (props: RouteComponentProps<{ url: string }>) => {
                     <td>
                       {promotion.createdDate ? <TextFormat type="date" value={promotion.createdDate} format={APP_DATE_FORMAT} /> : null}
                     </td>
+                    <td>{promotion.lastModifiedBy}</td>
                     <td>
                       {promotion.lastModifiedDate ? (
                         <TextFormat type="date" value={promotion.lastModifiedDate} format={APP_DATE_FORMAT} />
